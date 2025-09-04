@@ -214,15 +214,6 @@ SNMP 请求 → OID 解析 → Modbus 读取 → 数据类型转换 → 数据�
 2025-09-03 14:34:10,460 - INFO - ✅ SNMP 响应: temp = 2749.5°C (原值: 27495)
 ```
 
-## 🧪 测试脚本
-
-项目包含多个测试脚本：
-
-- `test_data_types.py`：测试数据类型转换
-- `test_timezone_config.py`：测试时区配置
-- `test_fixed_oids.py`：测试固定值 OID
-- `snmp_client_test.py`：SNMP 客户端测试
-
 ## 📋 配置示例
 
 ### 温度传感器配置
