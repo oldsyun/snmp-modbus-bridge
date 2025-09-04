@@ -290,8 +290,4 @@ snmp_data_type = OctetString
 
 本项目采用 MIT 许可证。
 
----
 
-**SNMP-Modbus Bridge Team**  
-版本: 1.0  
-日期: 2025-09-03
