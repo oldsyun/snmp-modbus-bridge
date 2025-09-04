@@ -1,0 +1,41 @@
+[Unit]
+Description=SNMP-Modbus Bridge Service
+Documentation=https://github.com/your-repo/snmp-modbus-bridge
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=snmp-bridge
+Group=snmp-bridge
+WorkingDirectory=/opt/snmp-modbus-bridge
+ExecStart=/usr/bin/python3 /opt/snmp-modbus-bridge/snmp_modbus_bridge.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=snmp-modbus-bridge
+
+# 环境变量
+Environment=PYTHONPATH=/opt/snmp-modbus-bridge
+Environment=PYTHONUNBUFFERED=1
+
+# 安全设置
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/snmp-modbus-bridge
+ReadWritePaths=/var/run
+
+# 资源限制
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# 网络权限（SNMP 需要绑定端口）
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
